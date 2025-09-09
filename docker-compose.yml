@@ -1,0 +1,16 @@
+services:
+  proxy:
+    image: itzg/mc-proxy:java24
+    restart: unless-stopped
+    ports:
+      - "25565:25577" # minecraft java
+      - "19132:19132/udp" # geyser mc/bedrock
+    environment:
+      TYPE: VELOCITY
+      MEMORY: 500M
+    volumes:
+      - ./data/proxy-data:/server
+      #- ./data/proxy-plugins:/plugins
+    container_name: proxy
+    tty: true
+    stdin_open: true
