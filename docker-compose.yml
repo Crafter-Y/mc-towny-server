@@ -21,7 +21,7 @@ services:
     container_name: proxy
     tty: true
     stdin_open: true
-  mc:
+  main:
     image: itzg/minecraft-server:java21
     restart: unless-stopped
     environment:
@@ -74,12 +74,12 @@ services:
     #   - "traefik.http.routers.mcdash.service=mcdash-service" # Explicit linking
     #   - "traefik.http.services.mcdash-service.loadbalancer.server.port=7867"
     volumes:
-      - ./data/mc-data:/data
+      - ./data/main-data:/data
       # - ./data/mc-conf:/config
       # - ./mc-plugins:/plugins
-      - ./patches/mc:/patches
+      - ./patches/main:/patches
       - ./forwarding.secret:/secret/forwarding.secret:ro
       - /etc/timezone:/etc/timezone:ro
-    container_name: mc
+    container_name: main
     tty: true
     stdin_open: true

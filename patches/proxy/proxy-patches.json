@@ -66,8 +66,9 @@
       "$set": {
         "path": "$.servers",
         "value": {
-          "lobby": "mc:25565",
-          "try": ["lobby"]
+          "lobby": "lobby:25565",
+          "main": "main:25565",
+          "try": ["lobby", "main"]
         }
       }
     }
