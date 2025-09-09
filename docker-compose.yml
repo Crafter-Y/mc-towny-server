@@ -8,8 +8,10 @@ services:
     environment:
       TYPE: VELOCITY
       MEMORY: 500M
+      #PATCH_DEFINITIONS: /patches
     volumes:
       - ./data/proxy-data:/server
+      - ./proxy-patches:/patches
       #- ./data/proxy-plugins:/plugins
     container_name: proxy
     tty: true
