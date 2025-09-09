@@ -1,0 +1,75 @@
+{
+  "file": "/server/velocity.toml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.bind",
+        "value": "0.0.0.0:25577"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.motd",
+        "value": "${CFG_MOTD}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.show-max-players",
+        "value": "${CFG_MAX_PLAYERS}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.player-info-forwarding-mode",
+        "value": "modern"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.kick-existing-players",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.advanced.login-ratelimit",
+        "value": 1000
+      }
+    },
+    {
+      "$set": {
+        "path": "$.advanced.log-command-executions",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.advanced.command-rate-limit",
+        "value": 200
+      }
+    },
+    {
+      "$set": {
+        "path": "$.advanced.kick-after-rate-limited-commands",
+        "value": 1
+      }
+    },
+    {
+      "$set": {
+        "path": "$.forced-hosts",
+        "value": {}
+      }
+    },
+    {
+      "$set": {
+        "path": "$.servers",
+        "value": {
+          "lobby": "mc:25565",
+          "try": ["lobby"]
+        }
+      }
+    }
+  ]
+}
