@@ -1,0 +1,71 @@
+{
+  "file": "/data/plugins/LuckPerms/config.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.server",
+        "value": "main"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.use-server-uuid-cache",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.storage-method",
+        "value": "MariaDB"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.address",
+        "value": "db"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.database",
+        "value": "${CFG_MYSQL_DATABASE}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.username",
+        "value": "${CFG_MYSQL_USER}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.password",
+        "value": "${CFG_MYSQL_PASSWORD}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.messaging-service",
+        "value": "redis"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.redis.enabled",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.redis.address",
+        "value": "redis"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.redis.password",
+        "value": "${CFG_REDIS_PASSWORD}"
+      }
+    }
+  ]
+}
