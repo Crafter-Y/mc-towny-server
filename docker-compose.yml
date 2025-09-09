@@ -14,7 +14,7 @@ services:
       CFG_MAX_PLAYERS: ${MAX_PLAYERS}
     volumes:
       - ./data/proxy-data:/server
-      - ./forwarding.secret:/config/forwarding.secret
+      - ./forwarding.secret:/config/forwarding.secret:ro
       - ./server-icon.png:/config/server-icon.png
       - ./patches/proxy:/patches
       # ./data/proxy-plugins:/plugins
@@ -34,7 +34,7 @@ services:
       MAX_PLAYERS: ${MAX_PLAYERS}
       RCON_PASSWORD: ${RCON_PASSWORD}
       USE_AIKAR_FLAGS: true
-      ENABLE_COMMAND_BLOCK: true
+      ENABLE_COMMAND_BLOCK: ${ENABLE_COMMAND_BLOCK}
       BROADCAST_RCON_TO_OPS: true
       JVM_DD_OPTS: "disable.watchdog:true"
       ENABLE_AUTOPAUSE: ${ENABLE_AUTOPAUSE}
@@ -81,5 +81,66 @@ services:
       - ./forwarding.secret:/secret/forwarding.secret:ro
       - /etc/timezone:/etc/timezone:ro
     container_name: main
+    tty: true
+    stdin_open: true
+  lobby:
+    image: itzg/minecraft-server:java21
+    restart: unless-stopped
+    environment:
+      EULA: true
+      TYPE: "PAPER"
+      VERSION: "1.21.4"
+      MEMORY: "2G"
+      ONLINE_MODE: false
+      DIFFICULTY: peaceful
+      MAX_PLAYERS: ${MAX_PLAYERS}
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      USE_AIKAR_FLAGS: true
+      ENABLE_COMMAND_BLOCK: ${ENABLE_COMMAND_BLOCK}
+      BROADCAST_RCON_TO_OPS: true
+      JVM_DD_OPTS: "disable.watchdog:true"
+      ENABLE_AUTOPAUSE: ${ENABLE_AUTOPAUSE}
+      #MODRINTH_PROJECTS: "spawn:2.4.1,vaultunlocked:2.7.0,viaversion:5.1.1,invsee++:0.29.6,squaremap:2WtLC9mv,tabtps:Q1sxIgnH,simple-voice-chat:bukkit-2.5.25,chunky:1.4.28,worldedit:ecqqLKUO,worldguard:7.0.12,datapack:terralith:tnavs2WP,datapack:explorify:1.6.2,datapack:incendium:aBrsXiTU,datapack:hearths:1.0.1,datapack:tidal-towns:HbNg7Lhz,datapack:nullscape:SFDfNp0O,datapack:dungeons-and-taverns:v4.4.4,datapack:hopo-better-mineshaft:1.2.8,datapack:hopo-better-underwater-ruins:1.2.1,datapack:dungeons+:1.9.0b,datapack:cherry-villages:1.0.8,datapack:qraftyfied:9.1.1"
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      SPAWN_PROTECTION: "0"
+      REPLACE_ENV_VARIABLES: true
+      PATCH_DEFINITIONS: /patches
+      CFG_FORWARDING_SECRET_FILE: /secret/forwarding.secret
+
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+    #   redis:
+    #     condition: service_healthy
+    #   proxy:
+    #     condition: service_healthy
+    # ports:
+    # - "24454:24454/udp" # voicechat
+    # - "8081:8080" # squaremap
+    # - "7867:7867" # mc dash
+    # labels:
+    #   - "traefik.enable=${ENABLE_TRAEFIK}"
+
+    #   # Router for Squaremap
+    #   - "traefik.http.routers.squaremap.rule=Host(`map.${DOMAIN}`)"
+    #   - "traefik.http.routers.squaremap.entrypoints=websecure"
+    #   - "traefik.http.routers.squaremap.tls.certresolver=myresolver"
+    #   - "traefik.http.routers.squaremap.service=squaremap-service" # Explicit linking
+    #   - "traefik.http.services.squaremap-service.loadbalancer.server.port=8080"
+
+    #   # Router for McDash
+    #   - "traefik.http.routers.mcdash.rule=Host(`panel.${DOMAIN}`)"
+    #   - "traefik.http.routers.mcdash.entrypoints=websecure"
+    #   - "traefik.http.routers.mcdash.tls.certresolver=myresolver"
+    #   - "traefik.http.routers.mcdash.service=mcdash-service" # Explicit linking
+    #   - "traefik.http.services.mcdash-service.loadbalancer.server.port=7867"
+    volumes:
+      - ./data/lobby-data:/data
+      # - ./data/mc-conf:/config
+      # - ./mc-plugins:/plugins
+      - ./patches/lobby:/patches
+      - ./forwarding.secret:/secret/forwarding.secret:ro
+      - /etc/timezone:/etc/timezone:ro
+    container_name: lobby
     tty: true
     stdin_open: true
