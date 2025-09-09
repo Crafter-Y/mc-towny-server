@@ -1,0 +1,65 @@
+{
+  "file": "/server/plugins/luckperms/config.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.storage-method",
+        "value": "MariaDB"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.address",
+        "value": "db"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.database",
+        "value": "${CFG_MYSQL_DATABASE}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.username",
+        "value": "${CFG_MYSQL_USER}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.data.password",
+        "value": "${CFG_MYSQL_PASSWORD}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.messaging-service",
+        "value": "redis"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.redis.enabled",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.redis.address",
+        "value": "redis"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.redis.password",
+        "value": "${CFG_REDIS_PASSWORD}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.cancel-failed-logins",
+        "value": true
+      }
+    }
+  ]
+}

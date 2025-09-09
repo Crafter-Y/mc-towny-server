@@ -3,3 +3,7 @@
 /data/proxy-data
 /data/main-data
 /data/lobby-data
+/data/db-backup
+/data/db-data
+/data/redis-data
+/data/traefik-data

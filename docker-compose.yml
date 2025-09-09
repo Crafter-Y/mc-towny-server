@@ -12,6 +12,11 @@ services:
       REPLACE_ENV_VARIABLES: true
       CFG_MOTD: ${MOTD}
       CFG_MAX_PLAYERS: ${MAX_PLAYERS}
+      CFG_MYSQL_DATABASE: ${MYSQL_DATABASE}
+      CFG_MYSQL_USER: ${MYSQL_USER}
+      CFG_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      CFG_REDIS_PASSWORD: ${REDIS_PASSWORD}
+      PLUGINS: "https://download.luckperms.net/1596/velocity/LuckPerms-Velocity-5.5.11.jar"
     volumes:
       - ./data/proxy-data:/server
       - ./forwarding.secret:/config/forwarding.secret:ro
@@ -21,6 +26,36 @@ services:
     container_name: proxy
     tty: true
     stdin_open: true
+  traefik:
+    image: "traefik:v3.5.1"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.dashboard=${TRAEFIK_DASHBOARD}"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+
+      #- "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      #- "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+
+      - "--providers.docker.exposedbydefault=false"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=${SSL_EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    labels:
+      - "traefik.enable=${TRAEFIK_DASHBOARD}"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=${TRAEFIK_ENTRYPOINT}"
+      - "traefik.http.services.traefik.loadbalancer.server.port=80"
+      #- "traefik.http.routers.traefik.tls.certresolver=myresolver"
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - "./data/traefik-data:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
   main:
     image: itzg/minecraft-server:java21
     restart: unless-stopped
@@ -46,13 +81,13 @@ services:
       PATCH_DEFINITIONS: /patches
       CFG_FORWARDING_SECRET_FILE: /secret/forwarding.secret
 
-    # depends_on:
-    #   db:
-    #     condition: service_healthy
-    #   redis:
-    #     condition: service_healthy
-    #   proxy:
-    #     condition: service_healthy
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      proxy:
+        condition: service_healthy
     # ports:
     # - "24454:24454/udp" # voicechat
     # - "8081:8080" # squaremap
@@ -106,15 +141,19 @@ services:
       REPLACE_ENV_VARIABLES: true
       PATCH_DEFINITIONS: /patches
       CFG_FORWARDING_SECRET_FILE: /secret/forwarding.secret
+      CFG_MYSQL_DATABASE: ${MYSQL_DATABASE}
+      CFG_MYSQL_USER: ${MYSQL_USER}
+      CFG_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      CFG_REDIS_PASSWORD: ${REDIS_PASSWORD}
       WORLD: "/worlds/lobby"
       FORCE_WORLD_COPY: true
-    # depends_on:
-    #   db:
-    #     condition: service_healthy
-    #   redis:
-    #     condition: service_healthy
-    #   proxy:
-    #     condition: service_healthy
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      proxy:
+        condition: service_healthy
     volumes:
       - ./data/lobby-data:/data
       # - ./data/mc-conf:/config
@@ -126,3 +165,56 @@ services:
     container_name: lobby
     tty: true
     stdin_open: true
+  db:
+    image: mariadb:12.0.2
+    restart: unless-stopped
+    command: --lower_case_table_names=1
+    container_name: db
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - ./data/db-data:/var/lib/mysql
+  redis:
+    image: redis:8.2.1-alpine
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - ./data/redis-data:/data
+    container_name: redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    tty: true
+    stdin_open: true
+  db-backup:
+    image: fradelg/mysql-cron-backup
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./data/db-backup:/backup
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASSWORD}
+      MYSQL_DB: ${MYSQL_DATABASE}
+      MAX_BACKUPS: 32
+      INIT_BACKUP: 1
+      # Every day at 03:00
+      CRON_TIME: 0 3 * * *
+      GZIP_LEVEL: 9
+      TZ: Europe/Berlin
+    container_name: db-backup
