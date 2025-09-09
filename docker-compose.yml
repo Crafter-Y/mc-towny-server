@@ -100,7 +100,7 @@ services:
       BROADCAST_RCON_TO_OPS: true
       JVM_DD_OPTS: "disable.watchdog:true"
       ENABLE_AUTOPAUSE: ${ENABLE_AUTOPAUSE}
-      MODRINTH_PROJECTS: "voidworld:1.0.0,customnpcs:1.7.5"
+      MODRINTH_PROJECTS: "voidworld:1.0.0,customnpcs:1.7.5,worldguard:7.0.13,worldedit:Jk1z2u7n,luckperms:v5.5.0-bukkit"
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       SPAWN_PROTECTION: "0"
       REPLACE_ENV_VARIABLES: true
