@@ -75,12 +75,16 @@ services:
       ENABLE_AUTOPAUSE: ${ENABLE_AUTOPAUSE}
       #VANILLATWEAKS_SHARECODE: "Ef0CJX,pmV6sg"
       #MODRINTH_PROJECTS: "spawn:2.4.1,vaultunlocked:2.7.0,viaversion:5.1.1,invsee++:0.29.6,squaremap:2WtLC9mv,tabtps:Q1sxIgnH,simple-voice-chat:bukkit-2.5.25,chunky:1.4.28,worldedit:ecqqLKUO,worldguard:7.0.12,datapack:terralith:tnavs2WP,datapack:explorify:1.6.2,datapack:incendium:aBrsXiTU,datapack:hearths:1.0.1,datapack:tidal-towns:HbNg7Lhz,datapack:nullscape:SFDfNp0O,datapack:dungeons-and-taverns:v4.4.4,datapack:hopo-better-mineshaft:1.2.8,datapack:hopo-better-underwater-ruins:1.2.1,datapack:dungeons+:1.9.0b,datapack:cherry-villages:1.0.8,datapack:qraftyfied:9.1.1"
+      MODRINTH_PROJECTS: "worldguard:7.0.13,worldedit:Jk1z2u7n,luckperms:v5.5.0-bukkit"
       MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
       SPAWN_PROTECTION: "0"
       REPLACE_ENV_VARIABLES: true
       PATCH_DEFINITIONS: /patches
       CFG_FORWARDING_SECRET_FILE: /secret/forwarding.secret
-
+      CFG_MYSQL_DATABASE: ${MYSQL_DATABASE}
+      CFG_MYSQL_USER: ${MYSQL_USER}
+      CFG_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      CFG_REDIS_PASSWORD: ${REDIS_PASSWORD}
     depends_on:
       db:
         condition: service_healthy
