@@ -1,0 +1,23 @@
+{
+  "file": "/server/plugins/tab/groups.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.per-world",
+        "value": {}
+      }
+    },
+    {
+      "$set": {
+        "path": "$._DEFAULT_",
+        "value": {
+          "tabprefix": "%luckperms-prefix%",
+          "tagprefix": "%luckperms-prefix%",
+          "customtabname": "%player%",
+          "tabsuffix": " &7|",
+          "tagsuffix": ""
+        }
+      }
+    }
+  ]
+}

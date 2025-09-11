@@ -1,0 +1,30 @@
+{
+  "file": "/server/plugins/tab/config.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.header-footer.header",
+        "value": [
+          "<#FFFFFF>&m                                                </#FFFF00>",
+          "&l&eTowny Server",
+          "&r&7&l>> %animation:Welcome%&3 &l%player%&7&l! &7&l<<",
+          "&r&7Online players: &f%online%",
+          ""
+        ],
+        "value-type": "array"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.header-footer.footer",
+        "value": [
+          "",
+          "%animation:time%",
+          "&2Ping: %ping%",
+          "&r&7Server: &r&b%server%",
+          "<#FFFFFF>&m                                                </#FFFF00>"
+        ]
+      }
+    }
+  ]
+}
