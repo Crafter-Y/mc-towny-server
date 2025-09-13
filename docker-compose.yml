@@ -240,3 +240,16 @@ services:
       GZIP_LEVEL: 9
       TZ: Europe/Berlin
     container_name: db-backup
+  main-backup:
+    image: itzg/mc-backup
+    depends_on:
+      main:
+        condition: service_healthy
+    environment:
+      BACKUP_INTERVAL: "24h"
+      RCON_HOST: "main"
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      EXCLUDES: ".cache,cache,libraries,logs,versions,backups"
+    volumes:
+      - ./data/main-data:/data:ro
+      - ./data/main-backups:/backups
