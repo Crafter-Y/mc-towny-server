@@ -98,12 +98,11 @@ services:
       CFG_REDIS_PASSWORD: ${REDIS_PASSWORD}
       CFG_WORLDGEN_IO_THREADS: ${WORLDGEN_IO_THREADS}
       CFG_WORLDGEN_WORKER_THREADS: ${WORLDGEN_WORKER_THREADS}
+      CFG_ANTI_XRAY_ENGINE_MODE: ${ANTI_XRAY_ENGINE_MODE}
     depends_on:
       db:
         condition: service_healthy
       redis:
-        condition: service_healthy
-      proxy:
         condition: service_healthy
     # ports:
     # - "24454:24454/udp" # voicechat
@@ -176,8 +175,6 @@ services:
       db:
         condition: service_healthy
       redis:
-        condition: service_healthy
-      proxy:
         condition: service_healthy
     volumes:
       - ./data/lobby-data:/data
