@@ -89,6 +89,8 @@ services:
         tab-bridge
         chunky
       SPAWN_PROTECTION: "0"
+      SIMULATION_DISTANCE: ${SIMULATION_DISTANCE}
+      VIEW_DISTANCE: ${RENDER_DISTANCE}
       REPLACE_ENV_VARIABLES: true
       PATCH_DEFINITIONS: /patches
       CFG_FORWARDING_SECRET_FILE: /secret/forwarding.secret
@@ -99,6 +101,8 @@ services:
       CFG_WORLDGEN_IO_THREADS: ${WORLDGEN_IO_THREADS}
       CFG_WORLDGEN_WORKER_THREADS: ${WORLDGEN_WORKER_THREADS}
       CFG_ANTI_XRAY_ENGINE_MODE: ${ANTI_XRAY_ENGINE_MODE}
+      CFG_HARD_DESPAWN_RANGE: ${HARD_DESPAWN_RANGE}
+      CFG_SOFT_DESPAWN_RANGE: ${SOFT_DESPAWN_RANGE}
     depends_on:
       db:
         condition: service_healthy
@@ -247,6 +251,7 @@ services:
         condition: service_healthy
     environment:
       BACKUP_INTERVAL: "24h"
+      PRUNE_BACKUPS_DAYS: 30
       RCON_HOST: "main"
       RCON_PASSWORD: ${RCON_PASSWORD}
       EXCLUDES: ".cache,cache,libraries,logs,versions,backups"

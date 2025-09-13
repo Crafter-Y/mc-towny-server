@@ -1,0 +1,47 @@
+{
+  "file": "/data/bukkit.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.ticks-per.monster-spawns",
+        "value": 10,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.ticks-per.water-spawns",
+        "value": 400,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.ticks-per.water-ambient-spawns",
+        "value": 400,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.ticks-per.water-underground-creature-spawns",
+        "value": 400,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.ticks-per.axolotl-spawns",
+        "value": 400,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.ticks-per.ambient-spawns",
+        "value": 400,
+        "value-type": "int"
+      }
+    }
+  ]
+}

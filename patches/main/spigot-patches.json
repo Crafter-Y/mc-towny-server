@@ -1,0 +1,109 @@
+{
+  "file": "/data/spigot.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.world-settings.default.mob-spawn-range",
+        "value": 4,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.animals",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.monsters",
+        "value": 24,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.raiders",
+        "value": 48,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.misc",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.water",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.villagers",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.flying-monsters",
+        "value": 48,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-tracking-range.players",
+        "value": 48,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-tracking-range.animals",
+        "value": 48,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-tracking-range.monsters",
+        "value": 48,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-tracking-range.misc",
+        "value": 32,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.entity-activation-range.tick-inactive-villagers",
+        "value": false
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.merge-radius.item",
+        "value": 3.5,
+        "value-type": "float"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.merge-radius.exp",
+        "value": 4.0,
+        "value-type": "float"
+      }
+    }
+  ]
+}

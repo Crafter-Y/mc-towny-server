@@ -13,6 +13,315 @@
         "value": "${CFG_ANTI_XRAY_ENGINE_MODE}",
         "value-type": "int"
       }
+    },
+    {
+      "$set": {
+        "path": "$.chunks.prevent-moving-into-unloaded-chunks",
+        "value": true
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "area_effect_cloud",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "arrow",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "breeze_wind_charge",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "dragon_fireball",
+        "value": 3,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "egg",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "ender_pearl",
+        "value": 32,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "experience_bottle",
+        "value": 3,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "experience_orb",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "eye_of_ender",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "fireball",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "firework_rocket",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "llama_spit",
+        "value": 3,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "shulker_bullet",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "small_fireball",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "snowball",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "spectral_arrow",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "trident",
+        "value": 16,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "wind_charge",
+        "value": 8,
+        "value-type": "int"
+      }
+    },
+    {
+      "$put": {
+        "path": "$.chunks.entity-per-chunk-save-limit",
+        "key": "wither_skull",
+        "value": 4,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.ambient.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.ambient.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.axolotls.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.axolotls.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.creature.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.creature.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.misc.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.misc.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.monster.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.monster.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.underground_water_creature.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.underground_water_creature.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.water_ambient.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.water_ambient.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.water_creature.hard",
+        "value": "${CFG_HARD_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.despawn-ranges.water_creature.soft",
+        "value": "${CFG_SOFT_DESPAWN_RANGE}",
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.collisions.max-entity-collisions",
+        "value": 2,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.misc.update-pathfinding-on-block-update",
+        "value": false
+      }
+    },
+    {
+      "$set": {
+        "path": "$.collisions.fix-climbing-bypassing-cramming-rule",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.environment.optimize-explosions",
+        "value": true
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.non-player-arrow-despawn-rate",
+        "value": 20,
+        "value-type": "int"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.entities.spawning.creative-arrow-despawn-rate",
+        "value": 20,
+        "value-type": "int"
+      }
     }
   ]
 }
