@@ -17,7 +17,9 @@ services:
       CFG_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       CFG_REDIS_PASSWORD: ${REDIS_PASSWORD}
       MINECRAFT_VERSION: "1.21.4"
-      MODRINTH_PROJECTS: "tab-was-taken:5.2.5,luckperms:v5.5.0-velocity"
+      MODRINTH_PROJECTS: |
+        tab-was-taken
+        luckperms
       PLUGINS: "https://github.com/NEZNAMY/VelocityScoreboardAPI/releases/download/1.1.3/VelocityScoreboardAPI.v1.1.3.jar"
     volumes:
       - ./data/proxy-data:/server
@@ -59,7 +61,7 @@ services:
       - "./data/traefik-data:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
   main:
-    image: itzg/minecraft-server:java21
+    image: itzg/minecraft-server:java24-graalvm
     restart: unless-stopped
     environment:
       EULA: true
@@ -71,13 +73,21 @@ services:
       MAX_PLAYERS: ${MAX_PLAYERS}
       RCON_PASSWORD: ${RCON_PASSWORD}
       USE_AIKAR_FLAGS: true
+      USE_MEOWICE_FLAGS: true
+      USE_MEOWICE_GRAALVM_FLAGS: true
       ENABLE_COMMAND_BLOCK: ${ENABLE_COMMAND_BLOCK}
       BROADCAST_RCON_TO_OPS: true
       JVM_DD_OPTS: "disable.watchdog:true"
       ENABLE_AUTOPAUSE: ${ENABLE_AUTOPAUSE}
       #VANILLATWEAKS_SHARECODE: "Ef0CJX,pmV6sg"
       #MODRINTH_PROJECTS: "spawn:2.4.1,vaultunlocked:2.7.0,viaversion:5.1.1,invsee++:0.29.6,squaremap:2WtLC9mv,tabtps:Q1sxIgnH,simple-voice-chat:bukkit-2.5.25,chunky:1.4.28,worldedit:ecqqLKUO,worldguard:7.0.12,datapack:terralith:tnavs2WP,datapack:explorify:1.6.2,datapack:incendium:aBrsXiTU,datapack:hearths:1.0.1,datapack:tidal-towns:HbNg7Lhz,datapack:nullscape:SFDfNp0O,datapack:dungeons-and-taverns:v4.4.4,datapack:hopo-better-mineshaft:1.2.8,datapack:hopo-better-underwater-ruins:1.2.1,datapack:dungeons+:1.9.0b,datapack:cherry-villages:1.0.8,datapack:qraftyfied:9.1.1"
-      MODRINTH_PROJECTS: "worldguard:7.0.13,worldedit:Jk1z2u7n,luckperms:v5.5.0-bukkit,tabtps:qOIQNUgt,tab-bridge:6.1.5"
+      MODRINTH_PROJECTS: |
+        worldguard
+        worldedit
+        luckperms
+        tabtps
+        tab-bridge
+        chunky
       SPAWN_PROTECTION: "0"
       REPLACE_ENV_VARIABLES: true
       PATCH_DEFINITIONS: /patches
@@ -124,7 +134,7 @@ services:
     tty: true
     stdin_open: true
   lobby:
-    image: itzg/minecraft-server:java21
+    image: itzg/minecraft-server:java24-graalvm
     restart: unless-stopped
     environment:
       EULA: true
@@ -136,11 +146,20 @@ services:
       MAX_PLAYERS: ${MAX_PLAYERS}
       RCON_PASSWORD: ${RCON_PASSWORD}
       USE_AIKAR_FLAGS: true
+      USE_MEOWICE_FLAGS: true
+      USE_MEOWICE_GRAALVM_FLAGS: true
       ENABLE_COMMAND_BLOCK: ${ENABLE_COMMAND_BLOCK}
       BROADCAST_RCON_TO_OPS: true
       JVM_DD_OPTS: "disable.watchdog:true"
       ENABLE_AUTOPAUSE: ${ENABLE_AUTOPAUSE}
-      MODRINTH_PROJECTS: "voidworld:1.0.0,customnpcs:1.7.5,worldguard:7.0.13,worldedit:Jk1z2u7n,luckperms:v5.5.0-bukkit,tabtps:qOIQNUgt,tab-bridge:6.1.5"
+      MODRINTH_PROJECTS: |
+        voidworld
+        customnpcs
+        worldguard
+        worldedit
+        luckperms
+        tabtps
+        tab-bridge
       SPAWN_PROTECTION: "0"
       REPLACE_ENV_VARIABLES: true
       PATCH_DEFINITIONS: /patches
