@@ -12,6 +12,18 @@
         "path": "$.proxies.velocity.secret",
         "value": "${CFG_FORWARDING_SECRET}"
       }
+    },
+    {
+      "$set": {
+        "path": "$.chunk-system.io-threads",
+        "value": "${CFG_WORLDGEN_IO_THREADS}"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.chunk-system.worker-threads",
+        "value": "${CFG_WORLDGEN_WORKER_THREADS}"
+      }
     }
   ]
 }

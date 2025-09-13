@@ -96,6 +96,8 @@ services:
       CFG_MYSQL_USER: ${MYSQL_USER}
       CFG_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       CFG_REDIS_PASSWORD: ${REDIS_PASSWORD}
+      CFG_WORLDGEN_IO_THREADS: ${WORLDGEN_IO_THREADS}
+      CFG_WORLDGEN_WORKER_THREADS: ${WORLDGEN_WORKER_THREADS}
     depends_on:
       db:
         condition: service_healthy
