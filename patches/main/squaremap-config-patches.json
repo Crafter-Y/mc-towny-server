@@ -1,0 +1,23 @@
+{
+  "file": "/data/plugins/squaremap/config.yml",
+  "ops": [
+    {
+      "$set": {
+        "path": "$.settings.ui.sidebar.pinned",
+        "value": "pinned"
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.player-tracker.nameplate.show-armor",
+        "value": false
+      }
+    },
+    {
+      "$set": {
+        "path": "$.world-settings.default.player-tracker.nameplate.show-health",
+        "value": false
+      }
+    }
+  ]
+}

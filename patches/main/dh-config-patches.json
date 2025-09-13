@@ -1,0 +1,12 @@
+{
+  "file": "/data/plugins/DHSupport/config.yml",
+  "ops": [
+    {
+      "$put": {
+        "path": "$",
+        "key": "generate_new_chunks",
+        "value": false
+      }
+    }
+  ]
+}

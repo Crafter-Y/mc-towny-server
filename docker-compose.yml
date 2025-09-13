@@ -88,6 +88,20 @@ services:
         tabtps
         tab-bridge
         chunky
+        distant-horizons-support
+        squaremap
+        datapack:nullscape
+        datapack:dungeons-and-taverns
+        datapack:terralith
+        datapack:explorify
+        datapack:incendium:pwe1kTJE
+        datapack:tidal-towns
+        datapack:hopo-better-mineshaft
+        datapack:hopo-better-underwater-ruins
+        datapack:dungeons+
+        datapack:cherry-villages
+        datapack:qraftyfied
+        datapack:hearths
       SPAWN_PROTECTION: "0"
       SIMULATION_DISTANCE: ${SIMULATION_DISTANCE}
       VIEW_DISTANCE: ${RENDER_DISTANCE}
@@ -112,15 +126,15 @@ services:
     # - "24454:24454/udp" # voicechat
     # - "8081:8080" # squaremap
     # - "7867:7867" # mc dash
-    # labels:
-    #   - "traefik.enable=${ENABLE_TRAEFIK}"
+    labels:
+      - "traefik.enable=true"
 
-    #   # Router for Squaremap
-    #   - "traefik.http.routers.squaremap.rule=Host(`map.${DOMAIN}`)"
-    #   - "traefik.http.routers.squaremap.entrypoints=websecure"
-    #   - "traefik.http.routers.squaremap.tls.certresolver=myresolver"
-    #   - "traefik.http.routers.squaremap.service=squaremap-service" # Explicit linking
-    #   - "traefik.http.services.squaremap-service.loadbalancer.server.port=8080"
+      # Router for Squaremap
+      - "traefik.http.routers.squaremap.rule=Host(`map.${DOMAIN}`)"
+      - "traefik.http.routers.squaremap.entrypoints=${TRAEFIK_ENTRYPOINT}"
+      #- "traefik.http.routers.squaremap.tls.certresolver=myresolver"
+      - "traefik.http.routers.squaremap.service=squaremap-service" # Explicit linking
+      - "traefik.http.services.squaremap-service.loadbalancer.server.port=8080"
 
     #   # Router for McDash
     #   - "traefik.http.routers.mcdash.rule=Host(`panel.${DOMAIN}`)"
