@@ -3,7 +3,7 @@
   "ops": [
     {
       "$set": {
-        "path": "$.header-footer.header",
+        "path": "$.header-footer.designs.default.header",
         "value": [
           "<#FFFFFF>&m                                                </#FFFF00>",
           "&l&eTowny Server",
@@ -16,7 +16,7 @@
     },
     {
       "$set": {
-        "path": "$.header-footer.footer",
+        "path": "$.header-footer.designs.default.footer",
         "value": [
           "",
           "%animation:time%",

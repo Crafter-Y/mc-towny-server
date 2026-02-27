@@ -46,18 +46,6 @@
     },
     {
       "$set": {
-        "path": "$.advanced.command-rate-limit",
-        "value": 200
-      }
-    },
-    {
-      "$set": {
-        "path": "$.advanced.kick-after-rate-limited-commands",
-        "value": 1
-      }
-    },
-    {
-      "$set": {
         "path": "$.forced-hosts",
         "value": {}
       }
