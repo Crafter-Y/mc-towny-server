@@ -21,8 +21,10 @@ services:
         tab-was-taken
         luckperms
       PLUGINS: "https://github.com/NEZNAMY/VelocityScoreboardAPI/releases/download/1.1.6/VelocityScoreboardAPI.v1.1.6.jar"
-      # DOWNLOAD_EXTRA_CONFIGS: |
-      #   plugins/luckperms/<https://raw.githubusercontent.com/LuckPerms/LuckPerms/refs/heads/master/velocity/src/main/resources/config.yml
+      DOWNLOAD_EXTRA_CONFIGS: |
+        plugins/luckperms/<https://raw.githubusercontent.com/LuckPerms/LuckPerms/refs/heads/master/velocity/src/main/resources/config.yml
+        plugins/tab/<https://raw.githubusercontent.com/NEZNAMY/TAB/refs/heads/master/shared/src/main/resources/config/config.yml
+        plugins/tab/<https://raw.githubusercontent.com/NEZNAMY/TAB/refs/heads/master/shared/src/main/resources/config/groups.yml
     volumes:
       - ./data/proxy-data:/server
       - ./forwarding.secret:/config/forwarding.secret:ro
@@ -103,11 +105,18 @@ services:
         datapack:incendium:gBoadsBv
         datapack:hopo-better-mineshaft
         datapack:hopo-better-underwater-ruins
+        datapack:hopo-better-ruined-portals
         datapack:dungeons+
         datapack:qraftys-japanese-villages
+        datapack:qraftys-jungle-villages
         datapack:qraftyfied
         datapack:hearths
         datapack:structory
+        datapack:lukis-grand-capitals
+        datapack:dungeons-and-taverns-stronghold-overhaul
+        datapack:unnamed-desert
+        datapack:wabi-sabi-structures
+#TODO        towny
 #        datapack:cherry-villages
 #        datapack:tidal-towns
       SPAWN_PROTECTION: "0"
